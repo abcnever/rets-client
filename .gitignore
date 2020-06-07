@@ -6,7 +6,6 @@
 
 #ignore node_modules
 node_modules
-package-lock.json
 
 #ignore integration test configs
 testconfig.json
