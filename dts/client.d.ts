@@ -1,4 +1,4 @@
-import { IClientMetadata } from './metadata' 
+import { IClientMetadata } from './metadata'
 import { IClientSearch } from './search'
 import { IClientObjects, IObjectData } from './object'
 import { RetsReplyError } from './errors'
@@ -35,7 +35,7 @@ export interface IClientSettingsWithUAAuthorization extends IClientConfiguration
   sessionId?: string
 }
 
-export type ClientSettings = IClientConfiguration & IClientSettingsWithUAAuthorization
+export type ClientSettings = IClientConfiguration | IClientSettingsWithUAAuthorization;
 
 export class Client {
   settings: ClientSettings
