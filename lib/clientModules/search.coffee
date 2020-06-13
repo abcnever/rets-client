@@ -23,7 +23,7 @@ errors = require('../utils/errors')
 #    Default values for query params:
 #
 #       queryType:'DMQL2',
-#       format:'COMPACT-DECODED',
+#       format:'COMPACT-Decoded',
 #       count:1,
 #       standardNames:0,
 #       restrictedIndicator:'***',
@@ -53,7 +53,7 @@ searchRets = (_queryOptions) -> Promise.try () =>
 #    Default values for query params:
 #
 #       queryType:'DMQL2',
-#       format:'COMPACT-DECODED',
+#       format:'COMPACT-Decoded',
 #       count:1,
 #       standardNames:0,
 #       restrictedIndicator:'***',

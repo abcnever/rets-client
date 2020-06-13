@@ -55,24 +55,24 @@ export class Client {
  * default query parameters:
  *   _queryOptionsDefaults =
  *   queryType: 'DMQL2'
- *   format: 'COMPACT-DECODED'
+ *   format: 'COMPACT-Decoded'
  *   count: number
  *   standardNames: 0
  *   restrictedIndicator: '***'
  *   limit: 'NONE'
  */
 export interface IQueryOptions {
-  searchType?: string
-  class?: string
-  query?: string
-  limit: number | string
+  searchType: string
+  class: string
+  query: string
+  limit?: number | string
   /**
    * Some RETS servers appear to require a 1 based offest
    * NaN is passed unless supplied
    * Offsets are 1-based, thus an offset of 1 means to start with the first record.
    * http://www.dis.com/NAR/api/user/classlibrets_1_1_search_request.html#ddc8fb0423f46082749a4ac16315ce7f
    */
-  offset: number
+  offset?: number
   restrictedIndicator?: string
   /**
    * CUSTOM - limit the number of calls/pages in the RETS query
@@ -89,14 +89,14 @@ export interface IBaseResponse {
 export interface IGetResourcesResponse extends IBaseResponse {
   results: {
     info?: any
-    metadata?: IRecordMetadata[]
+    metadata: IRecordMetadata[]
   }[]
   type?: 'METADATA-RESOURCE'
 }
 export interface IGetClassResponse extends IBaseResponse {
   results: {
     info?: any
-    metadata?: IClassMetadata[]
+    metadata: IClassMetadata[]
   }[]
   type?: 'METADATA-RESOURCE',
   entriesReceived?: number
@@ -108,7 +108,7 @@ export interface IGetTableResponse extends IBaseResponse {
 }
 export interface ITableResult {
   info?: any
-  metadata?: ITableMetadata[]
+  metadata: ITableMetadata[]
 }
 export type ReplyTag = 'OPERATION_SUCCESSFUL'
 export interface IHeaderInfo {
@@ -238,16 +238,13 @@ export interface RetsContext {
 }
 export interface IRetsQueryOptions {
   QueryType: string
-  Format: 'COMPACT-DECODED'
+  Format: 'COMPACT-Decoded'
   Count: number
-  StandardNames: number
-  RestrictedIndicator: string
   Limit: number
   Offset: number
   SearchType: string
   Class: string
   Query: string
-
 }
 
 

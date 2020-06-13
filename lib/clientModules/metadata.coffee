@@ -50,7 +50,7 @@ _getMetadataImpl = (retsSession, type, queryOptions, client) -> new Promise (res
 #
 # @param type Metadata type (i.e METADATA-RESOURCE, METADATA-CLASS)
 # @param id Metadata id
-# @param format Data format (i.e. COMPACT, COMPACT-DECODED), defaults to 'COMPACT'
+# @param format Data format (i.e. COMPACT, COMPACT-Decoded), defaults to 'COMPACT'
 ###
 
 getMetadata = (type, id, format='COMPACT') -> Promise.try () =>
@@ -92,7 +92,7 @@ getSystem = () ->
           result.timeZoneOffset = attrs.TimeZoneOffset
         when 'COMMENTS'
           comment = ''
-          
+
     retsParser.parser.on 'text', (text) ->
       if retsParser.currElementName == 'COMMENTS'
         comment += text
@@ -112,7 +112,7 @@ getSystem = () ->
           result.comments = comments
         result.headerInfo = retsContext.headerInfo
         resolve(result)
-    
+
     retsParser.parser.write(retsContext.body)
     retsParser.parser.end()
 
@@ -120,7 +120,7 @@ getSystem = () ->
 module.exports = (_retsSession, _client) ->
   if !_retsSession
     throw new errors.RetsParamError('System data not set; invoke login().')
-  
+
 
   _getParsedMetadataFactory = (type, format='COMPACT') ->
     (id, classType) -> Promise.try () ->
@@ -131,16 +131,16 @@ module.exports = (_retsSession, _client) ->
         ID: if classType then "#{id}:#{classType}" else id
         Format: format
       _getMetadataImpl(_retsSession, type, options, _client)
-  
-  
+
+
   _getParsedAllMetadataFactory = (type, format='COMPACT') ->
     options =
       Type: type
       ID: '0'
       Format: format
     () -> _getMetadataImpl(_retsSession, type, options, _client)
-  
-  
+
+
   retsSession: Promise.promisify(_retsSession)
   client: _client
   getMetadata: getMetadata

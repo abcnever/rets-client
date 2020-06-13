@@ -10,25 +10,23 @@ errors = require('./errors')
 mergeOptions = (args...) ->
   if args.length == 0
     return {}
-  
+
   result = {}
   # start at the end, so that values from earlier options objects overwrite and have priority
   for index in [args.length-1..0]
     options = args[index]
     for own key of options
       result[key] = options[key]
-  
+
   result
 
 
 # default query parameters
 _queryOptionsDefaults =
   queryType: 'DMQL2'
-  format: 'COMPACT-DECODED'
+  format: 'COMPACT-Decoded'
   count: 1
-  standardNames: 0
-  restrictedIndicator: '***'
-  limit: 'NONE'
+  limit: 100
 
 capitalizeFirstLetter = (string) ->
   string.charAt(0).toUpperCase() + string.slice(1);

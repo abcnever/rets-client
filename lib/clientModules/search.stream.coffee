@@ -19,7 +19,7 @@ errors = require('../utils/errors')
 #    Default values for query params:
 #
 #       queryType:'DMQL2',
-#       format:'COMPACT-DECODED',
+#       format:'COMPACT-Decoded',
 #       count:1,
 #       standardNames:0,
 #       restrictedIndicator:'***',
@@ -52,7 +52,7 @@ searchRets = (_options, responseHandler) -> Promise.try () =>
 #    Default values for query params:
 #
 #       queryType:'DMQL2',
-#       format:'COMPACT-DECODED',
+#       format:'COMPACT-Decoded',
 #       count:1,
 #       standardNames:0,
 #       restrictedIndicator:'***',
@@ -70,7 +70,7 @@ query = (resourceType, classType, queryString, _options={}, rawData=false, parse
 
   # make sure queryType and format will use the searchRets defaults
   delete mainOptions.queryType
-  if mainOptions.format != 'COMPACT-DECODED' && mainOptions.format != 'COMPACT'
+  if mainOptions.format != 'COMPACT-Decoded' && mainOptions.format != 'COMPACT'
     delete mainOptions.format
   queryOptions = queryOptionHelpers.normalizeOptions(mainOptions)
 
